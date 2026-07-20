@@ -1,7 +1,7 @@
 export default function LetterSection() {
   return (
     <section className="relative w-full bg-black py-24 px-4 border-t border-white/10">
-      <div className="max-w-[680px] mx-auto">
+      <div className="max-w-[680px] mx-auto text-center">
         <p
           className="mb-4 font-medium text-[13px] tracking-[3px] uppercase text-[#9CA3AF]"
           style={{ fontFamily: "'IBM Plex Mono', monospace" }}
@@ -16,7 +16,7 @@ export default function LetterSection() {
         </h2>
 
         <div
-          className="flex flex-col gap-6 text-[16px] md:text-[17px] leading-[1.75] text-[#C9CDD3]"
+          className="flex flex-col items-center gap-6 text-[16px] md:text-[17px] leading-[1.75] text-[#C9CDD3]"
           style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
         >
           <p>
