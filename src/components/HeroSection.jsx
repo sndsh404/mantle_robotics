@@ -10,19 +10,19 @@ const HeroBackground = memo(function HeroBackground() {
         className="absolute inset-0"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(245,243,239,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(245,243,239,0.05) 1px, transparent 1px)',
+            'linear-gradient(rgba(245,243,239,0.14) 1px, transparent 1px), linear-gradient(90deg, rgba(245,243,239,0.14) 1px, transparent 1px)',
           backgroundSize: '44px 44px',
           maskImage:
-            'radial-gradient(ellipse 65% 55% at 50% 40%, black 30%, transparent 100%)',
+            'radial-gradient(ellipse 75% 65% at 50% 40%, black 45%, transparent 100%)',
           WebkitMaskImage:
-            'radial-gradient(ellipse 65% 55% at 50% 40%, black 30%, transparent 100%)',
+            'radial-gradient(ellipse 75% 65% at 50% 40%, black 45%, transparent 100%)',
         }}
       />
       <div
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 55% 45% at 50% 32%, rgba(10,147,77,0.22), transparent 70%)',
+            'radial-gradient(ellipse 55% 45% at 50% 32%, rgba(10,147,77,0.32), transparent 70%)',
         }}
       />
     </div>

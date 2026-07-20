@@ -50,7 +50,7 @@ export default function LetterSection() {
           className="mt-12 text-[16px] leading-[1.6] text-[#F5F3EF]"
           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
         >
-          Sandesh Bhandari &amp; Aamod
+          Sandesh Bhandari &amp; Aamod Paudel
           <div
             className="text-[13px] text-[#6B7280] mt-1"
             style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
