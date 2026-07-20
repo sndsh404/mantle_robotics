@@ -10,7 +10,7 @@ function CTAButton({ variant = 'primary', className, children, ...props }) {
   return (
     <a
       className={cn(base, variants[variant], className)}
-      style={{ fontFamily: "'Inter', sans-serif" }}
+      style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
       {...props}
     >
       {children}
@@ -27,13 +27,13 @@ export default function CTASection() {
       <div className="max-w-[720px] mx-auto flex flex-col items-center">
         <h2
           className="font-medium text-[32px] md:text-[40px] leading-[1.15] tracking-[-1px] text-[#F5F3EF] text-center mb-6"
-          style={{ fontFamily: "'Manrope', sans-serif" }}
+          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
         >
           Bring observability to your fleet
         </h2>
         <p
           className="text-[16px] leading-[1.5] text-[#9CA3AF] text-center max-w-[480px] mb-10"
-          style={{ fontFamily: "'Inter', sans-serif" }}
+          style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
         >
           Free for a two-person team to adopt in an afternoon. Built for
           warehouse robots, inspection drones, and any fleet running ROS 2.
@@ -59,7 +59,7 @@ export default function CTASection() {
       <footer
         id="contact"
         className="mt-24 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-[1100px] mx-auto text-[13px] text-[#6B7280]"
-        style={{ fontFamily: "'Inter', sans-serif" }}
+        style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
       >
         <span>© 2026 Mantle Robotics Inc</span>
         <a href="mailto:hello@mantlerobotics.com" className="hover:text-[#F5F3EF] transition-colors">

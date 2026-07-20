@@ -1,6 +1,6 @@
 import HeroSection from './components/HeroSection.jsx'
 import ProblemStats from './components/ProblemStats.jsx'
-import HowItWorks from './components/HowItWorks.jsx'
+import LetterSection from './components/LetterSection.jsx'
 import CTASection from './components/CTASection.jsx'
 
 export default function App() {
@@ -8,7 +8,7 @@ export default function App() {
     <>
       <HeroSection />
       <ProblemStats />
-      <HowItWorks />
+      <LetterSection />
       <CTASection />
     </>
   )

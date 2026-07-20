@@ -1,19 +1,30 @@
 import { memo } from 'react'
 import { cn } from '../lib/cn.js'
 
-const BackgroundVideo = memo(function BackgroundVideo() {
+const TAGLINE = 'The debugging platform for robot fleets.'
+
+const HeroBackground = memo(function HeroBackground() {
   return (
     <div className="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="w-full h-full object-cover"
-      >
-        <source src="/upscaled-video.mp4" type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 bg-black/40" />
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(245,243,239,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(245,243,239,0.05) 1px, transparent 1px)',
+          backgroundSize: '44px 44px',
+          maskImage:
+            'radial-gradient(ellipse 65% 55% at 50% 40%, black 30%, transparent 100%)',
+          WebkitMaskImage:
+            'radial-gradient(ellipse 65% 55% at 50% 40%, black 30%, transparent 100%)',
+        }}
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 55% 45% at 50% 32%, rgba(10,147,77,0.22), transparent 70%)',
+        }}
+      />
     </div>
   )
 })
@@ -28,7 +39,7 @@ function CTAButton({ variant = 'primary', className, children, ...props }) {
   return (
     <a
       className={cn(base, variants[variant], className)}
-      style={{ fontFamily: "'Inter', sans-serif" }}
+      style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
       {...props}
     >
       {children}
@@ -42,35 +53,35 @@ export default function HeroSection() {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet"
       />
 
       <section className="relative w-full h-screen min-h-[700px] flex flex-col items-center justify-center overflow-hidden bg-black">
-        <BackgroundVideo />
+        <HeroBackground />
 
         <div className="relative z-10 flex flex-col items-center justify-center px-4 w-full max-w-[1440px] mt-[40px]">
           <p
-            className="mb-8 font-medium text-[16px] sm:text-[18px] tracking-[0.5px] uppercase text-center text-transparent bg-clip-text bg-gradient-to-r from-[#CBEFAC] to-[#0A934D]"
-            style={{ fontFamily: "'Inter', sans-serif" }}
+            className="mb-6 text-[13px] sm:text-[14px] tracking-[3px] uppercase text-center text-[#9CA3AF]"
+            style={{ fontFamily: "'IBM Plex Mono', monospace" }}
           >
-            Datadog and Sentry for the physical world
+            Mantle Robotics
           </p>
 
           <h1
-            className="font-medium text-[42px] md:text-[56px] lg:text-[68px] leading-[1.1] md:leading-[1.05] tracking-[-1px] md:tracking-[-2.15px] text-[#F5F3EF] text-center max-w-[760px] mb-8"
-            style={{ fontFamily: "'Manrope', sans-serif" }}
+            className="font-medium text-[38px] md:text-[52px] lg:text-[62px] leading-[1.15] md:leading-[1.1] tracking-[-1px] md:tracking-[-1.5px] text-[#F5F3EF] text-center max-w-[780px] mb-8"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
-            Know why your robot failed before your coffee gets cold
+            {TAGLINE}
           </h1>
 
           <p
-            className="font-normal text-[16px] md:text-[18px] leading-[1.5] text-[#9CA3AF] text-center max-w-[500px] mb-12"
-            style={{ fontFamily: "'Inter', sans-serif" }}
+            className="font-normal text-[16px] md:text-[18px] leading-[1.6] text-[#9CA3AF] text-center max-w-[540px] mb-12"
+            style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
           >
-            Mantle Robotics captures the seconds before every failure, groups
-            identical incidents across your fleet, and replays exactly what
-            the robot saw — cutting diagnosis from days to minutes.
+            We capture the moments before a robot fails, group repeated
+            failures across your fleet into a single issue, and let you
+            replay exactly what happened in the browser.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4">

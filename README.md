@@ -1,6 +1,6 @@
-# Mantle Robotics — Website
+# Mantle Robotics Website
 
-Minimalist landing page for Mantle Robotics, Inc. — "Datadog and Sentry for the physical world." Built with React, Vite, and Tailwind CSS.
+Minimalist landing page for Mantle Robotics, Inc., the debugging platform for robot fleets. Built with React, Vite, and Tailwind CSS.
 
 ## Prerequisites
 
@@ -52,8 +52,6 @@ npm run preview
 ```
 mantle_robotics/
 ├── index.html                     # HTML entry point, page title/meta
-├── public/
-│   └── upscaled-video.mp4         # Hero background video
 ├── src/
 │   ├── main.jsx                   # React root
 │   ├── index.css                  # Tailwind entry point
@@ -61,9 +59,9 @@ mantle_robotics/
 │   ├── lib/
 │   │   └── cn.js                  # clsx + tailwind-merge class helper
 │   └── components/
-│       ├── HeroSection.jsx        # Full-viewport video hero
-│       ├── ProblemStats.jsx       # Downtime/diagnosis-time stats
-│       ├── HowItWorks.jsx         # 5-piece product architecture
+│       ├── HeroSection.jsx        # Full-viewport hero with wordmark, tagline, and CSS telemetry-grid background
+│       ├── ProblemStats.jsx       # Downtime cost stats (sourced)
+│       ├── LetterSection.jsx      # Founders' letter explaining the product
 │       └── CTASection.jsx         # Final CTA + footer
 ├── tailwind.config.js
 ├── postcss.config.js
@@ -76,4 +74,4 @@ mantle_robotics/
 - **Vite** for dev server and bundling
 - **Tailwind CSS** for styling
 - **clsx** + **tailwind-merge** for conditional class names
-- Fonts: **Inter** and **Manrope**, loaded from Google Fonts
+- Fonts: **Space Grotesk** (display), **IBM Plex Sans** (body), and **IBM Plex Mono** (labels), loaded from Google Fonts
