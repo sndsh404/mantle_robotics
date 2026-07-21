@@ -1,0 +1,305 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-heading: var(--font-serif);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  /* Mantle Robotics brand colors */
+  --color-cream: var(--pw-cream);
+  --color-surface: var(--pw-surface);
+  --color-ink: var(--pw-ink);
+  --color-ink-muted: var(--pw-ink-muted);
+  --color-ink-faint: var(--pw-ink-faint);
+  --color-ember: var(--pw-ember);
+  --color-royal: var(--pw-royal);
+  --color-blueprint: var(--pw-blueprint);
+  --color-peach: var(--pw-peach);
+  --color-signal-yellow: var(--pw-yellow);
+  --color-signal-green: var(--pw-green);
+  --color-night: var(--pw-night);
+  --color-night-surface: var(--pw-night-surface);
+}
+
+:root {
+  /* Mantle Robotics light-technical base (extend.ai cream + tutor ink) */
+  --background: oklch(0.925 0.005 85);           /* cream #E9E6E0 */
+  --foreground: oklch(0.235 0.002 80);           /* ink #20201F */
+  --card: oklch(0.982 0.003 85);                 /* stone-50 #FAF9F5 */
+  --card-foreground: oklch(0.235 0.002 80);
+  --popover: oklch(0.982 0.003 85);
+  --popover-foreground: oklch(0.235 0.002 80);
+  --primary: oklch(0.235 0.002 80);              /* ink buttons */
+  --primary-foreground: oklch(0.982 0.003 85);
+  --secondary: oklch(0.955 0.004 85);
+  --secondary-foreground: oklch(0.235 0.002 80);
+  --muted: oklch(0.955 0.004 85);
+  --muted-foreground: oklch(0.45 0.004 80);      /* #565450 */
+  --accent: oklch(0.665 0.19 38);                /* ember orange #F2612B */
+  --accent-foreground: oklch(0.982 0.003 85);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.235 0.002 80 / 12%);         /* hairline ink/12 */
+  --input: oklch(0.235 0.002 80 / 15%);
+  --ring: oklch(0.665 0.19 38);
+  --chart-1: oklch(0.665 0.19 38);
+  --chart-2: oklch(0.44 0.25 264);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.982 0.003 85);
+  --sidebar-foreground: oklch(0.235 0.002 80);
+  --sidebar-primary: oklch(0.235 0.002 80);
+  --sidebar-primary-foreground: oklch(0.982 0.003 85);
+  --sidebar-accent: oklch(0.955 0.004 85);
+  --sidebar-accent-foreground: oklch(0.235 0.002 80);
+  --sidebar-border: oklch(0.235 0.002 80 / 12%);
+  --sidebar-ring: oklch(0.665 0.19 38);
+
+  /* Mantle Robotics raw palette */
+  --pw-cream: #e9e6e0;
+  --pw-surface: #faf9f5;
+  --pw-ink: #20201f;
+  --pw-ink-muted: #565450;
+  --pw-ink-faint: #67645e;
+  --pw-ember: #f2612b;          /* burn orange / extend peach bridge */
+  --pw-royal: #002fd3;          /* tutor royal blue */
+  --pw-blueprint: #d9e6f8;      /* extend blueprint panel */
+  --pw-peach: #fbe8d4;          /* extend warm panel */
+  --pw-yellow: #f5c842;         /* tutor CTA yellow */
+  --pw-green: #1aa043;          /* tutor CTA green */
+  --pw-night: #0d1117;          /* burn body */
+  --pw-night-surface: #1e212a;  /* burn nav surface */
+}
+
+.dark {
+  --background: oklch(0.17 0.012 260);           /* burn night #0D1117 */
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.24 0.015 265);                 /* #1E212A */
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.24 0.015 265);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.68 0.005 260);     /* #8D949D */
+  --accent: oklch(0.665 0.19 38);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.665 0.19 38);
+  --chart-1: oklch(0.665 0.19 38);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: clip;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  /* keep jump targets clear of the fixed pill nav */
+  section[id] {
+    scroll-margin-top: 96px;
+  }
+  /* display headings use negative tracking; keep word gaps visibly open */
+  h1,
+  h2 {
+    word-spacing: 0.06em;
+  }
+}
+
+@layer utilities {
+  /* tutor graph-paper hero texture */
+  .graph-paper {
+    background-image:
+      linear-gradient(to right, rgba(32, 32, 31, 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(32, 32, 31, 0.055) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  /* extend blueprint-blue grid panel */
+  .blueprint-grid {
+    background-color: var(--pw-blueprint);
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.75) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.75) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+  /* extend warm peach grid panel */
+  .peach-grid {
+    background-color: var(--pw-peach);
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.7) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.7) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+  /* subtle film grain for flat dark panels (tester.army-style, no glow) */
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.06;
+  }
+  /* burn layered card shadow stack */
+  .shadow-stack {
+    box-shadow:
+      0 21px 45px rgba(0, 0, 0, 0.29),
+      0 83px 83px rgba(0, 0, 0, 0.25),
+      0 186px 111px rgba(0, 0, 0, 0.15),
+      0 330px 132px rgba(0, 0, 0, 0.04);
+  }
+  /* soft light-mode elevation */
+  .shadow-soft {
+    box-shadow:
+      0 1px 2px rgba(32, 32, 31, 0.05),
+      0 8px 24px rgba(32, 32, 31, 0.07);
+  }
+  /* extend mono chrome */
+  .mono-label {
+    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
+
+/* extend corner registration dots — apply to a relatively-positioned box */
+.corner-dots::before,
+.corner-dots::after,
+.corner-dots > .corner-dots-b::before,
+.corner-dots > .corner-dots-b::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(32, 32, 31, 0.3);
+  z-index: 1;
+}
+.corner-dots::before { top: 8px; left: 8px; }
+.corner-dots::after { top: 8px; right: 8px; }
+.corner-dots > .corner-dots-b::before { bottom: 8px; left: 8px; }
+.corner-dots > .corner-dots-b::after { bottom: 8px; right: 8px; }
+
+/* marquee — continuously scrolling row; track holds two copies of its content */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  overflow: hidden;
+  position: relative;
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 40s) linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+/* soft edge fades over dark sections */
+.marquee-fade-night::before,
+.marquee-fade-night::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 96px;
+  z-index: 2;
+  pointer-events: none;
+}
+.marquee-fade-night::before {
+  left: 0;
+  background: linear-gradient(to right, var(--pw-night), transparent);
+}
+.marquee-fade-night::after {
+  right: 0;
+  background: linear-gradient(to left, var(--pw-night), transparent);
+}
+/* note: the marquee intentionally ignores prefers-reduced-motion — continuous
+   scroll is a core design requirement (wisprflow-style); hover still pauses it */
+
+/* scroll reveal (IntersectionObserver adds .revealed) */
+.fade-up {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.fade-up.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

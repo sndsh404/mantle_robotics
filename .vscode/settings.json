@@ -1,0 +1,39 @@
+{
+  "explorer.compactFolders": true,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "Dockerfile": "Dockerfile.dev, docker-compose.yml, .dockerignore",
+    "package.json": "package-lock.json, .nvmrc, components.json, eslint.config.mjs, next.config.ts, postcss.config.mjs, tsconfig.json",
+    "README.md": "CHANGELOG.md, LICENSE"
+  },
+  "files.exclude": {
+    ".amazonq": true,
+    ".augment": true,
+    ".claude": true,
+    ".codex": true,
+    ".continue": true,
+    ".cursor": true,
+    ".gemini": true,
+    ".opencode": true,
+    ".windsurf": true,
+    ".vscode": true,
+    ".aider.conf.yml": true,
+    ".clinerules": true,
+    ".windsurfrules": true,
+    "AGENTS.md": true,
+    "CLAUDE.md": true,
+    "GEMINI.md": true
+  },
+  "search.exclude": {
+    ".amazonq": true,
+    ".augment": true,
+    ".claude": true,
+    ".codex": true,
+    ".continue": true,
+    ".cursor": true,
+    ".gemini": true,
+    ".opencode": true,
+    ".windsurf": true
+  }
+}

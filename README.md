@@ -1,77 +1,112 @@
-# Mantle Robotics Website
+# Mantle Robotics
 
-Minimalist landing page for Mantle Robotics, Inc., the debugging platform for robot fleets. Built with React, Vite, and Tailwind CSS.
+Concept demo: the debugging platform for robot fleets.
 
-## Prerequisites
+## Tech stack
 
-- [Node.js](https://nodejs.org/) 18 or later (includes npm)
+| Tool | Version | Notes |
+|---|---|---|
+| Next.js | 16.2.1 | App Router, static prerender for all routes |
+| React | 19.2.4 | |
+| TypeScript | ^5 | strict mode, no `any` |
+| Tailwind CSS | ^4 | design tokens in `src/app/globals.css` |
+| shadcn/ui | ^4.1.0 | only `Button` primitive in use |
+| Lucide React | ^1.6.0 | mostly replaced by hand-drawn SVGs in `src/components/icons.tsx` |
+| playwright-core | ^1.61.1 | dev-only, drives QA screenshot scripts |
 
-Check your versions:
+Fonts (via `next/font/google`): Newsreader (serif display), Manrope (sans), JetBrains Mono (labels).
 
-```bash
-node -v
-npm -v
-```
+**Node.js 24+ required** (`.nvmrc` and `engines` both say 24). Older versions may work but are not supported.
 
-## Setup
-
-Clone the repo and install dependencies:
+## Local setup
 
 ```bash
 git clone https://github.com/aamodpaudel/mantle_robotics.git
 cd mantle_robotics
+node -v   # must be 24+ — install from https://nodejs.org if not
 npm install
-```
-
-## Run in development
-
-Starts a local dev server with hot reload at [http://localhost:5173](http://localhost:5173):
-
-```bash
 npm run dev
 ```
 
-## Build for production
+Open http://localhost:3000.
 
-Outputs a static, deployable build to the `dist/` folder:
+Windows note: run these in Git Bash (bundled with [Git for Windows](https://gitforwindows.org/)) rather than cmd/PowerShell for the smoothest experience; if you download the repo as an archive instead of cloning, extract it with `tar -xf` from a terminal.
 
-```bash
-npm run build
-```
+## Environment variables
 
-## Preview the production build
+**No env vars are required to run locally.** The app reads nothing from `process.env`.
 
-Serves the `dist/` folder locally so you can check the built version:
+If that changes:
 
-```bash
-npm run preview
-```
+1. Document the new variable in `.env.example` with a placeholder value.
+2. Copy `.env.example` to `.env.local` and fill in real values.
+3. Never commit `.env*` files — `.gitignore` already covers them.
 
 ## Project structure
 
 ```
-mantle_robotics/
-├── index.html                     # HTML entry point, page title/meta
-├── src/
-│   ├── main.jsx                   # React root
-│   ├── index.css                  # Tailwind entry point
-│   ├── App.jsx                    # Renders all page sections in order
-│   ├── lib/
-│   │   └── cn.js                  # clsx + tailwind-merge class helper
-│   └── components/
-│       ├── HeroSection.jsx        # Full-viewport hero with wordmark, tagline, and CSS telemetry-grid background
-│       ├── ProblemStats.jsx       # Downtime cost stats (sourced)
-│       ├── LetterSection.jsx      # Founders' letter explaining the product
-│       └── CTASection.jsx         # Final CTA + footer
-├── tailwind.config.js
-├── postcss.config.js
-└── vite.config.js
+src/
+  app/
+    page.tsx            # homepage (full pitch, all sections)
+    problem/            # /problem deep-dive
+    platform/           # /platform (flywheel + why it works)
+    products/           # /products (product grid + trust marquee)
+    how-it-works/       # /how-it-works (steps + dashboard mock)
+    blog/               # /blog index
+    blog/[slug]/        # blog posts (statically generated)
+    legal/              # /legal stub
+    layout.tsx          # fonts, metadata, nav + footer + chat + back-to-top
+    globals.css         # design tokens, utilities (graph-paper, marquee, grain)
+    icon.svg            # favicon (three-rhombus mark)
+  components/           # one file per section + shared pieces
+    icons.tsx           # logomark + all hand-drawn SVG icons
+    PillNav.tsx         # fixed nav (client: scroll state + active route)
+    SiteFooter.tsx      # footer incl. compliance seal badges
+    FounderChat.tsx     # chat bubble + auto-open popup (homepage only)
+    Reveal.tsx          # scroll-reveal wrapper (IntersectionObserver)
+  lib/
+    blog.ts             # blog posts are defined here (data, not CMS)
+    utils.ts            # cn() helper
+  types/                # shared TS interfaces
+public/                 # og.png, robots-facing static assets
+scripts/                # qa-screenshots.mjs, make-og.mjs (playwright helpers)
+docs/research/          # design-language notes and component specs (history)
 ```
 
-## Tech stack
+## Scripts
 
-- **React** (functional components)
-- **Vite** for dev server and bundling
-- **Tailwind CSS** for styling
-- **clsx** + **tailwind-merge** for conditional class names
-- Fonts: **Space Grotesk** (display), **IBM Plex Sans** (body), and **IBM Plex Mono** (labels), loaded from Google Fonts
+| Command | What it does | When to run it |
+|---|---|---|
+| `npm run dev` | Start the dev server on :3000 | day-to-day development |
+| `npm run build` | Production build (must pass before any push) | before every push |
+| `npm run start` | Serve the production build locally | verifying what a host would serve |
+| `npm run lint` | ESLint | before a push, or in CI |
+| `npm run typecheck` | `tsc --noEmit` | quick correctness check |
+| `npm run check` | lint + typecheck + build in one go | final pre-push gate |
+
+Utility scripts (not in `package.json`): `node scripts/qa-screenshots.mjs` captures full-page desktop/mobile screenshots; `node scripts/make-og.mjs` regenerates `public/og.png`. Both need the dev server running and a local Chrome install.
+
+## Conventions
+
+These mirror `CLAUDE.md` — if you change one, change both.
+
+- **Commit messages:** short lowercase titles, a few words, no descriptions, no footers. Example: `fix stat labels`.
+- **Branch flow:** working directly on `main` is fine for now. Run `npm run build` locally before every push — a broken push is a broken deploy.
+- **Design rules:** one orange accent (`--pw-ember`) reserved for interactive elements and key stats; no decorative pill outlines; no glow/bloom effects (flat surfaces + subtle grain); labels are mono uppercase; body copy is plain language with no em dashes.
+
+## Deployment
+
+The `Dockerfile` and Railway-specific cache-mount ids were carried over from the template this site was built from — see [docs/deployment.md](docs/deployment.md) before wiring up a host. If you're not deploying to Railway, the cache-mount `id=s/...` values in the Dockerfile can be simplified.
+
+## Docs
+
+| Doc | Contents |
+|---|---|
+| [docs/architecture.md](docs/architecture.md) | rendering model, route map, design system, conventions |
+| [docs/deployment.md](docs/deployment.md) | Railway pipeline, the Dockerfile cache-mount fix, local prod parity |
+| [docs/roadmap.md](docs/roadmap.md) | the startup plan behind the demo (phases, revenue sequencing) |
+| [docs/research/](docs/research/) | design-language notes and component specs from the original build |
+
+## Notes
+
+Concept demo. Companies and testimonials shown on the site are illustrative. MIT license retained from the original template this repo was scaffolded from.
